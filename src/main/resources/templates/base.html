@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="headerFiles">
+  <title>Dynamic Dashboard</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Dynamic DashBoard">
+  <meta name="keywords" content="">
+  <meta name="author" content="Updeshxp">
+
+  <!-- Styles -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" type="text/css" />
+  <!-- Icons -->
+  <link rel="stylesheet" th:href="@{/css/bootdatepicker.css}" type="text/css" />
+  <!-- Date-time Picker -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> -->
+
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+  <script type="text/javascript" th:src="@{/js/jquery.js}"></script><!-- Jquery -->
+  <script type="text/javascript" th:src="@{/js/plotly-latest.min.js}"></script>
+
+  <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
+
+
+</head>
+
+<body>
+  <div th:fragment="scripts">
+  <div style="display: none;" id="loading-overlay">
+    <div class="loader">
+      <img th:src="@{/loading.svg}" />
+    </div>
+  </div>
+
+  <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+  </div>
+  <!-- Bootstrap -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+</body>
+
+</html>

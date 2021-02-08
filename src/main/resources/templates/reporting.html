@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="reps" class="container article">
+  <p class="text-primary text-center" style="
+  font-weight: 600;
+  padding: 30px 10px 10px;">Type of Report</p>
+  <form action="/GenerateReport" id="redirecturl" method="post">
+    <div class="row">
+      <div class="col-md-3 col-sm-1 col-lg-3">
+
+        <!-- <div class="btn-group" > -->
+
+        <div class="row">
+          <button type="button" class="btn-block" onclick="setChartName('ErrorReport')">
+            <img th:src="@{/reportC.png}" />
+            <figcaption>Error by Error Type Report</figcaption>
+          </button>
+        </div>
+        <div class="row">
+          <button id="ProcessingB" type="button" class="btn-block" onclick="setChartName('ProcessingTimeReport')">
+            <img th:src="@{/reportA.png}" />
+            <figcaption>Processing Time Report</figcaption>
+          </button>
+        </div>
+        <!-- <div class="row">
+          <button type="button" class="btn-block" onclick="setChartName('ProcessingTimeReportPRID')" >
+            <imgr('static', filename='reportAA.png') }}" />
+            <figcaption>Project Status Report</figcaption>
+          </button>
+        </div> -->
+        <div class="row">
+          <button type="button" class="btn-block" onclick="setChartName('StuckOrderReport')">
+            <img th:src="@{/reportD.png}" />
+            <figcaption>Stuck Order Graphical Report</figcaption>
+          </button>
+        </div>
+        <!-- </div> -->
+      </div>
+      <div class="col-sm-9 sol-md-9">
+        <div class="row opt">
+          <div style="
+          padding-top: 20px;" class='col-md-2 col-sm-2 col-md-offset-1'>
+            <label>Select Date:</label>
+          </div>
+          <!-- <div class='col-md-2'>
+            <div class="form-group">
+                <span class="form-label">From</span>
+                <input id="datefrom" class="form-control" type="date" name="fromDate" required/>
+                  </div>
+      </div>
+        
+        <div class='col-md-2'>
+            <div class="form-group">
+                <span class="form-label">To</span>
+                <input id="dateto" class="form-control" type="date" name="toDate" required/>
+                  </div>
+              </div> -->
+
+          <div class='col-md-4'>
+            <div class="form-group">
+              <!-- <label for="bdate">From:</label> -->
+              <div class='input-group date' id='bdate'>
+                <div class="input-group-prepend"><span class="input-group-addon input-group-text">From:</span></div>
+                <input name="fromDate" type='text' class="form-control" required />
+                <div class="input-group-addon input-group-append"><span class="input-group-text">
+                    <i class="fa fa-calendar" aria-hidden="true"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-4'>
+            <div class="form-group">
+              <!-- <label for="bdate2">To:</label> -->
+              <div class='input-group date' id='bdate2'>
+                <div class="input-group-prepend"><span class="input-group-addon input-group-text">To:</span></div>
+                <input name="toDate" type='text' class="form-control" required />
+                <div class="input-group-addon input-group-append"><span class="input-group-text">
+                    <i class="fa fa-calendar" aria-hidden="true"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input name="chartName" id="chartName" type='text' class="form-control d-none" required />
+          <!--<div style="padding-top: 10px;" class='col-md-2'>
+                    <button type="reset" value="Reset">Reset</button>
+                  </div-->
+        </div>
+        <script type="text/javascript">
+          $(function () {
+            $('#bdate').datetimepicker({
+              useCurrent: false,
+              format: "YYYY-MM-DD",
+              maxDate: moment()
+            });
+            $('#bdate2').datetimepicker({
+              useCurrent: true, //Important!
+              format: "YYYY-MM-DD",
+              maxDate: moment()
+            });
+            $("#bdate").on("dp.change", function (e) {
+              $('#bdate2').data("DateTimePicker").minDate(e.date);
+            });
+            $("#bdate2").on("dp.change", function (e) {
+              $('#bdate').data("DateTimePicker").maxDate(e.date);
+            });
+          });
+        </script>
+        <div class="row form-group opt" id="ProcTimeInput" style="display:none">
+          <div style="
+  padding-top: 20px;" class='col-md-2 col-sm-2 col-md-offset-1'>
+            <label>Select Profile:</label>
+          </div>
+          <div class="col-md-4">
+            <span class="form-label">Profile Type</span>
+            <select id="Profile" name="profile" placeholder="Select Profile" class="form-control" tabindex="2">
+
+            </select>
+            <span class="select-arrow"></span>
+          </div>
+
+          <div class="col-md-5">
+            <div class="form-group">
+              <span class="form-label">Task Name</span>
+              <select id="taskname" name="task" data-placeholder="Select TaskName" class="form-control" tabindex="2">
+                <option value="None" disabled selected>Select Profile Name</option>
+              </select>
+              <span class="select-arrow"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div style="padding-top: 20px;" class='col-md-2 offset-md-6'>
+            <button type="reset" value="Reset">Reset</button>
+          </div>
+          <div style="padding-top: 20px;" class='col-md-2'>
+            <button style="color:grey; cursor:not-allowed;" id='submit' type="submit" disabled>SUBMIT</button>
+          </div>
+
+        </div>
+      </div>
+      <!-- <div style="height:100px">
+  <button type="submit" href="/">SUBMIT</button>
+    <button type="reset" value="Reset">Reset</button>
+</div> -->
+    </div>
+  </form>
+
+<link rel="stylesheet" th:href="@{/css/bootdatepicker.css}" type="text/css" />
+<!-- Date-time Picker -->
+<script type="text/javascript" th:src="@{/js/moment.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker.js}"></script>
+<script>
+  // window.onload = function () {
+  //   $('.nav-link').removeClass('active')
+  //   $("#report").addClass('active');
+  // };
+  $("#Profile").change(function () {
+    var text = $(this).val();
+
+    $.ajax({
+      url: "/taskname",
+      type: "get",
+      timeout: 5000,
+      data: {
+        profile: text
+      },
+      success: function (response) {
+        $("#taskname").html(response);
+      },
+      error: function (x, textstatus, m) {
+        if (textstatus == "timeout") {
+          alert("Request Timeout, Try Again");
+        }
+        $("#taskname").html("<option value=\"None\" disabled selected>Could not fetch Tasknames</option>");
+      }
+    });
+  });
+
+
+
+  $('.btn-block').click(function () {
+    $('.btn-block').removeClass('active')
+    $(this).toggleClass('active');
+  });
+
+  function openTab(tabname) {
+    $('.nav-pills a[href="#' + tabname + '"]').tab('show');
+  }
+</script>
+</div>
+<!-- <script src="../static/js/scripts.js"></script> -->
+</html>

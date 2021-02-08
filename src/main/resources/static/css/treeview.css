@@ -1,0 +1,176 @@
+/*
+ * CSS3 Treeview. No JavaScript
+ * @version 1.0
+ * @author Martin Ivanov
+ * @url developer's website: http://wemakesites.net/
+ * @url developer's twitter: https://twitter.com/#!/wemakesitesnet
+ * @url developer's blog http://acidmartin.wordpress.com/
+ **/
+
+/*
+ * This solution works with all modern browsers and Internet Explorer 9+. 
+ * If you are interested in purchasing a JavaScript enabler for IE8 
+ * for the CSS3 Treeview, please, check this link:
+ * http://experiments.wemakesites.net/miscellaneous/acidjs-css3-treeview/
+ **/
+/*
+* Modified version of the original CSS.
+* Please refer to Martin Ivanov website http://experiments.wemakesites.net/css3-treeview.html for the original
+*/
+.right {
+    text-align: right;
+    float: right;
+}
+
+.css-treeview table {
+
+    margin: 5px 0 10px 0;
+
+}
+
+.css-treeview ul,
+.css-treeview li {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+
+}
+
+.css-treeview input {
+    width: 100%;
+    height: 1.25rem;
+    position: absolute;
+    opacity: 0;
+}
+
+.css-treeview {
+    font: normal 11px "Segoe UI", Arial, Sans-serif;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* info icon */
+.css-treeview a {
+    background: url("icons.png") no-repeat;
+    background-position: 0px -59px;
+}
+
+.css-treeview a::before {
+    content: "";
+    width: 16px;
+    margin: 0px 2px 0px 0px;
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+
+}
+
+.css-treeview a.class1 {
+    color: green;
+    text-decoration: none;
+
+}
+
+.css-treeview a.class2 {
+    color: yellow;
+    text-decoration: none;
+
+}
+
+.css-treeview a.class3 {
+    color: blue;
+    text-decoration: none;
+
+}
+
+.css-treeview a.class4 {
+    color: black;
+    text-decoration: none;
+
+}
+
+.css-treeview a.class5 {
+    color: blue;
+    text-decoration: none;
+
+}
+
+.css-treeview a:hover {
+    text-decoration: underline;
+}
+
+.css-treeview input+label+ul {
+    margin: 0px 0px 0px 22px;
+    color: black;
+}
+
+.css-treeview input~ul {
+    display: none;
+}
+
+.css-treeview input:disabled+label {
+    opacity: .6;
+}
+
+.css-treeview input:checked:not(:disabled)~ul {
+    display: block;
+}
+
+.css-treeview label,
+.css-treeview label::before {
+    cursor: pointer;
+    background: url("icons.png") no-repeat;
+}
+
+.css-treeview label,
+.css-treeview a,
+.css-treeview label::before {
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+}
+
+/* Closed Folder icon */
+.css-treeview label {
+    background-position: 18px -44px;
+}
+
+/* Collapsed Plus symbol */
+.css-treeview label::before {
+    content: "";
+    width: 16px;
+    margin: 0px 22px 0px 0px;
+    vertical-align: middle;
+    background-position: 0px -16px;
+}
+
+/* Expanded Minus symbol */
+.css-treeview input:checked+label::before {
+    background-position: 0px -0px;
+}
+
+/* Open Folder icon */
+.css-treeview input:checked+label {
+    background-position: 18px -30px;
+    font-weight: bold
+}
+
+/* webkit adjacent element selector bugfix */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .css-treeview {
+        -webkit-animation: webkit-adjacent-element-selector-bugfix infinite 1s;
+    }
+
+    @-webkit-keyframes webkit-adjacent-element-selector-bugfix {
+        from {
+            padding: 0px;
+        }
+
+        to {
+            padding: 0px;
+        }
+    }
+}

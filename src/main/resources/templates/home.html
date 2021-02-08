@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="base :: headerFiles"> </head>
+<div th:insert="navbar :: navbarTop"></div>
+
+<body>
+<div class="tab-content">
+  <div id="orders" class="tab-pane fade show active">
+    <div class="container article">
+      <section class="hero is-primary is-bold is-large">
+        <div class="hero-body justify-content-center">
+
+          <div class="directory-searcher">
+
+            <form id="search" class="form-inline" action="/searchorder" method="POST">
+              <div class="form-group col-md-5"><input id="OCNum" class="form-control" name="ordernum" type="text"
+                  placeholder="Enter ID" required></div>
+              <div class="form-group col-md-4">
+                <select id="OCid" name="OCid" data-placeholder="Search by.." class="chosen-select form-control"
+                  required>
+                  <option value="None" disabled selected></option>
+                  <option value="cust_id">Customer ID</option>
+                  <option value="fwa_id">Framework ID</option>
+                  <option value="project_name">Project Name</option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <button class="form-control" style="width:inherit;" type="submit" name="action" value="Search"><i
+                    class="fa fa-search fa-fw" aria-hidden="true"></i>SEARCH</button>
+              </div>
+            </form>
+          </div>
+
+
+        </div>
+      </section>
+    </div>
+    <div id="resblock" style="display: none;" class="container article">
+      <div id="res"></div>
+    </div>
+  </div>
+  <div id="monitoring" class="tab-pane fade">
+    <div th:replace="monitoring :: monitor"></div>
+  </div>
+  <div id="reporting" class="tab-pane">
+    <div th:replace="reporting :: reps"></div>
+  </div>
+  <div id="report" class="tab-pane">
+    <div class="container article">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="clearfix">
+            <div class="float-right"><a class="btn btn-warning btn-lg" onclick="clearReports()">Home</a></div>
+          </div>
+          <div class="clearfix" id="piegraph">
+          </div>
+          <div class="mplotlinks" id="log">
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" id="tabdetails" name="tabdetails">
+          <div id="table">
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 offset-1">
+          <button class="btn-info" style="display:none;width: 100%;" type="button" id="DLbutton"
+            onclick="myFunction()">Download</button></div>
+      </div>
+    </div>
+
+  </div>
+  <div id="ts" class="tab-pane fade">
+    <div class="container article">
+      <div class="text-center">
+        <pre id="rep">
+
+      </pre>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+<div th:replace="base :: scripts"></div>
+<link rel="stylesheet" th:href="@{css/chosen.css}" type="text/css" /><!-- Chosen -->
+<script type="text/javascript" th:src="@{/js/chosen.js}"></script><!-- Nice Select -->
+<script>
+  function cleanRes() {
+    $("#res").html("");
+    $("#resblock").hide();
+    //$("#search").trigger("reset");
+  }
+</script>

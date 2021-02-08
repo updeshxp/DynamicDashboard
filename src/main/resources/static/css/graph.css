@@ -1,0 +1,25 @@
+
+.bar {
+  fill: steelblue;
+}
+
+.barB {
+  fill: black;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.barB:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
+
+.xaxis text{
+    text-anchor: start !important;
+    transform: rotate(30deg);
+}

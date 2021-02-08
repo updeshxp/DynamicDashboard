@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="monitor" class="container article">
+
+    <form action="/getLiveData" id="monitor" method="post">
+        <div class="row opt">
+
+            <div style="
+          padding-top: 25px;" class='col-md-2 col-sm-2 offset-1'>
+                <label>Select Timeline:</label>
+            </div>
+            <div style="
+            padding-top: 15px;" class="form-group col-md-6">
+                <select style="
+                height: 50px;" id="Prof" name="timeline" placeholder="Select Profile" class="form-control"
+                    tabindex="2">
+                    <option value="Today">Today</option>
+                    <option value="LD">Yesterday</option>
+                    <option value="LW">Last Week</option>
+                    <option value="LM">Last Month</option>
+                    <option value="custom">Custom</option>
+                </select>
+                <span class="select-arrow"></span>
+            </div>
+        </div>
+        <div class="row" id="cust" style="display: none;">
+            <div style="
+          padding-top: 5px;" class='col-md-2 col-sm-2 offset-1'>
+                <label>Select Date:</label>
+            </div>
+
+            <div class='col-md-3'>
+                <div class="form-group">
+                    <div class='input-group date' id='mdate'>
+                        <div class="input-group-prepend"><span class="input-group-addon input-group-text">From:</span>
+                        </div>
+                        <input id="fd" name="fromDate" type='text' class="form-control" required />
+                        <div class="input-group-addon input-group-append"><span class="input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-3'>
+                <div class="form-group">
+                    <div class='input-group date' id='mdate2'>
+                        <div class="input-group-prepend"><span class="input-group-addon input-group-text">To:</span>
+                        </div>
+                        <input id="td" name="toDate" type='text' class="form-control" required />
+                        <div class="input-group-addon input-group-append"><span class="input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-2'>
+                <button class="btn btn-info" type="button" id="smon" onclick="showLive()">Get</button>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-9 offset-2">
+
+                <div class="mplotlinks" id="mon">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="tabdet" name="tabdet"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-1">
+                <button class="btn-info" style="display:none;width: 100%;" type="button" id="Mbutton"
+                    onclick="myFunction()">Download</button></div>
+        </div>
+
+
+
+        <script type="text/javascript">
+            $(function () {
+                $('#mdate').datetimepicker({
+                    useCurrent: false,
+                    format: "YYYY-MM-DD",
+                    maxDate: moment()
+                });
+                $('#mdate2').datetimepicker({
+                    useCurrent: true, //Important!
+                    format: "YYYY-MM-DD",
+                    maxDate: moment()
+                });
+                $("#mdate").on("dp.change", function (e) {
+                    $('#mdate2').data("DateTimePicker").minDate(e.date);
+                });
+                $("#mdate2").on("dp.change", function (e) {
+                    $('#mdate').data("DateTimePicker").maxDate(e.date);
+                });
+            });
+
+            $("#Prof").change(function () {
+                var text = $(this).val();
+                console.log(text);
+                if (text != "custom") {
+                    document.getElementById('cust').style.display = "none";
+                    showLive();
+                } else {
+                    document.getElementById('cust').style.display = "";
+                }
+
+            });
+        </script>
+    </form>
+
+
+</div>
+</html>

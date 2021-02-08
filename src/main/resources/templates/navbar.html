@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<header th:fragment="navbarTop">
+  <!-- Defining the header section of the page with the appropriate tag -->
+
+  <h1 id="title">DYN DASHBOARD</h1>
+
+  <div class="container article">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" onclick='openTab("ts");' href="#"><img th:src="@{/dashboard_alt.svg}"
+          height="45" alt="dash_icon"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
+        <!-- Nav pills -->
+        <ul class="nav nav-pills" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link mx-3 active" data-toggle="pill" href="#orders">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a onclick="mon()" class="nav-link mx-3" data-toggle="pill" href="#monitoring">Live Monitor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-3" data-toggle="pill" href="#reporting">Reports</a>
+          </li>
+          <li class="nav-item" style="display: none;">
+            <a class="nav-link mx-3" data-toggle="pill" href="#report">Result</a>
+          </li>
+          <li class="nav-item" style="display: none;">
+            <a class="nav-link mx-3" data-toggle="pill" href="#ts"></a>
+          </li>
+        </ul>
+        <!-- <ul class="navbar-nav">
+          <li class="nav-item">
+            <button id="order" class="nav-link mx-3 active" onclick="gotoURL('/')">Orders</button>
+          </li>
+          <li class="nav-item">
+            <button id="Monitor" class="nav-link mx-3" onclick="gotoURL('/monitoring')">Live Monitor</button>
+          </li>
+          <li class="nav-item">
+            <button id="report" class="nav-link mx-3" onclick="gotoURL('/reporting')">Reports</button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled mx-3" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul> -->
+        <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+      </div>
+    </nav>
+  </div>
+
+</header>
+</html>
